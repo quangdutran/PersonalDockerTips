@@ -1,0 +1,29 @@
+----------------VOLUME Path on Windows Docker using WSL 2--------------------------
+\\wsl$\docker-desktop-data\version-pack-data\community\docker\volumes
+
+
+-----------------MOVE CONTAINER FROM ONE HOST TO ANOTHER---------------------------
+Must run on volume from beginning to save data
+
+NOTE: Can't remove image when there's containers (instances) of that images
+ $() --> this is shell syntax, which is not available in cmd, use in powershell
+
+    #docker stop $(docker ps --filter "ancestor=committed-mysql" -q -a)
+    #docker rm $(docker ps --filter "ancestor=committed-mysql" -q -a)
+    --- Remove all containers that created from image named "committed-mysql"
+    #docker rmi -image-name
+
+- Save the image in the old host:
+#docker save image-name > image-name.tar
+
+- Load the image in the new host:
+#docker load < image-name.tar
+
+- Create and run container from image using volume:
+# docker volume create my-vol --> check where on disk this vol is and then back it up
+Usually /var/lib/docker usually mounted in C:\Users\Public\Documents\Hyper-V\Virtual hard disks OR check Docker windows settings
+
+#docker run -v Path_to_Volume_folder_on_host_or_volume_name:mounted_dir_in_container imagename
+#docker volume ls --> show all volumes 
+
+
