@@ -27,3 +27,5 @@ Usually /var/lib/docker usually mounted in C:\Users\Public\Documents\Hyper-V\Vir
 #docker volume ls --> show all volumes 
 
 
+----------------DOCKER WSL2 HIGH RAM------------------------------------------------
+Workaround: https://github.com/microsoft/WSL/issues/4166
